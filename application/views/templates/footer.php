@@ -31,13 +31,16 @@
 <!-- Scripts -->
 <script>
 window.api_url = '<?= site_url('api'); ?>';
+window.base_url = '<?= base_url(); ?>';
 </script>
 <?php
+if (isset($scripts)):
 foreach ($scripts as $item):
 ?>
 <script src="<?= base_url($item); ?>"></script>
 <?php
 endforeach;
+endif;
 ?>
 </body>
 </html>

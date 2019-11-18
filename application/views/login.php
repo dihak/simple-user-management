@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input name="password" type="password" class="form-control" placeholder="Password" value='bismillah'>
+          <input name="password" type="password" class="form-control" placeholder="Password" value='123'>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

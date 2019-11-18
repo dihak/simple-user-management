@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Soal 5</title>
+  <title>Users Management</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css'); ?>">
 <?php
+if (isset($css)):
 foreach ($css as $item):
 ?>
   <link rel="stylesheet" href="<?= base_url($item); ?>">
 <?php
 endforeach;
+endif;
 ?>
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('dist/css/adminlte.min.css'); ?>">

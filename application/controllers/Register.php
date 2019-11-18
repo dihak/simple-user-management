@@ -3,7 +3,7 @@ class Register extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('users');
+		$this->load->model('users_model');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 	}
@@ -52,10 +52,10 @@ class Register extends CI_Controller {
 		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
 		$this->form_validation->set_rules('terms', 'Terms', 'required');
 		if ($this->form_validation->run() != false) {
-			$this->users->create([
+			$this->users_model->create([
 				'nama' => $nama,
 				'email' => $email,
-				'password' => password_hash($password, PASSWORD_DEFAULT),
+				'password' => $password,
 			]);
 			redirect('/login?success');
 		}
