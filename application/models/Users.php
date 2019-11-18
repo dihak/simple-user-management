@@ -21,5 +21,17 @@ class Users extends CI_Model {
 	{
 		return $this->db->where('id', $id)->delete($this->name);
 	}
+
+	public function login($email, $password)
+	{
+		$query = $this->db->where('email', $email)->get('users');
+		if ($query->num_rows() == 1) {
+			$user = $query->row();
+			if (password_verify($password, $user->password)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
 ?>

@@ -33,10 +33,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  <?php if ($success): ?>
 	  <div class="alert alert-success">Register berhasil</div>
 	  <?php endif;?>
-
+	  <div id="status" class="alert alert-success d-none"></div>
       <form action="<?= site_url('login'); ?>" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input name="email" type="email" class="form-control" placeholder="Email" value='me@dihak.my.id'>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input name="password" type="password" class="form-control" placeholder="Password" value='bismillah'>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -82,6 +82,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('dist/js/adminlte.min.js'); ?>"></script>
+
+<script>
+var form_element = $('form');
+var status_element = $('#status');
+form_element.on('submit', function(event) {
+	event.preventDefault();
+	status_element.text('Sedang login...').removeClass('d-none alert-success alert-danger').addClass('alert-info');
+	$.ajax({
+		type: 'POST',
+		url: '<?= site_url('api/login'); ?>',
+		data: form_element.serialize(),
+		success: function(data) {
+			var result = JSON.parse(data);
+			console.log(result.success);
+			if (result.success) {
+				status_element.text('Login berhasil, mengalihkan...').removeClass('d-none alert-info alert-danger').addClass('alert-success');
+			} else {
+				status_element.text('Login gagal').removeClass('d-none alert-info alert-success').addClass('alert-danger');
+			}
+		}
+	})
+})
+</script>
 
 </body>
 </html>
