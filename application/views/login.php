@@ -1,6 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,9 +92,9 @@ form_element.on('submit', function(event) {
 		data: form_element.serialize(),
 		success: function(data) {
 			var result = JSON.parse(data);
-			console.log(result.success);
 			if (result.success) {
 				status_element.text('Login berhasil, mengalihkan...').removeClass('d-none alert-info alert-danger').addClass('alert-success');
+				window.location.href = '<?= site_url('users'); ?>';
 			} else {
 				status_element.text('Login gagal').removeClass('d-none alert-info alert-success').addClass('alert-danger');
 			}

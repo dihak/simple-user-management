@@ -28,7 +28,13 @@ class Users extends CI_Model {
 		if ($query->num_rows() == 1) {
 			$user = $query->row();
 			if (password_verify($password, $user->password)) {
-				return true;
+				return [
+					'id' => $user->id,
+					'nama' => $user->nama,
+					'email' => $user->email,
+					'photo' => $user->photo,
+					'status' => 'login'
+				];
 			}
 		}
 		return false;
