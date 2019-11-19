@@ -16,6 +16,6 @@ Fitur :
 
 ## Credits
 
-[AdminLTE](https://adminlte.io/)
-[Datatables](https://datatables.net/)
-[JQuery](https://jquery.com)
+- [AdminLTE](https://adminlte.io/)
+- [Datatables](https://datatables.net/)
+- [Jquery](https://jQuery.com)
