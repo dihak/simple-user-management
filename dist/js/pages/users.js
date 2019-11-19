@@ -1,5 +1,5 @@
 $("#user-table").each(function () {
-  $(this).DataTable({
+  window.user_datatable = $(this).DataTable({
 	  serverSide: true,
 	  processing: true,
 	  ajax: {
@@ -66,6 +66,7 @@ window.delete_user = function(element, id) {
 			var result = JSON.parse(data);
 			if (result.success) {
 				alert('Berhasil');
+				user_datatable.row(element.parents('tr')).remove().draw();
 			} else {
 				alert('Gagal');
 			}
